@@ -1,0 +1,81 @@
+{% extends 'index/base.html' %}
+{% block title %}How to listen? | Jack Radio 90.5{% endblock %}
+{% block description %}Few instructions on how to listen to JACK{% endblock %}
+{% block keywords %}Listen, Jack Radio 90.5, Jack Radio Online, Jack Radio Koronadal, How to listen{% endblock %}
+{% block og_title %}How to listen? | Jack Radio 90.5{% endblock %}
+{% block og_description %}Few instructions on how to listen to JACK{% endblock %}
+{% block og_image %}http://{{ request.get_host }}{% static 'index/images/how_to_listen.jpg' %}{% endblock %}
+{% block og_type %}website{% endblock %}
+{% block twitter_title %}How to listen? | Jack Radio 90.5{% endblock %}
+{% block twitter_description %}Few instructions on how to listen to JACK{% endblock %}
+{% block twitter_image %}http://{{ request.get_host }}{% static 'index/images/how_to_listen.jpg' %}{% endblock %}
+{% block info_active %}active{% endblock %}
+{% block info_active_sn %}active{% endblock %}
+
+
+
+
+{% block body %}
+{% load staticfiles%}
+
+<div class="container">
+    <div class="row">
+        <a href="#"><h1>Listen to JACK</h1></a>
+        <div class="col s12 m12 l6 offset-l1 ad" style="margin-top: 1rem;">
+            <div class="top-header center no-angle">
+                <h4>Listen here on website!</h4>
+            </div>
+            <div class="card">
+                <div class="card-image ad">
+                    <div class="img" style="background-image: url({% static 'index/images/web.jpg' %});">
+                        <div class="gradient-overlay">
+                            <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                        </div>
+                    </div>
+                    <a class="waves-effect waves-light center ad" href="{% url 'index:radio' %}"><strong>LEARN MORE</strong></a>
+                </div>
+            </div>
+        </div>
+         <div class="col s12 m12 l4 offset-l1 card-panel" style="margin-top: 4rem;">
+            {% include 'index/others/vfollow_links.html' %}
+        </div>
+        <div class="col s12 m12 l6 offset-l1 ad" >
+            <div class="top-header center no-angle">
+                <h4>Listen on FM Radio.</h4>
+            </div>
+            <div class="card">
+                <div class="card-image ad ad-custom">
+                    <div class="img" style="background-image: url({% static 'index/images/tune_radio.jpg' %});">
+                        <div class="gradient-overlay">
+                            <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                        </div>
+                    </div>
+                    <h5>Tune your FM Radio to 90.5MHz, and we'll be at your beck and call forever. Lucky you.</h5>
+                </div>
+            </div>
+
+        </div>
+         <div class="col s12 m12 l4 offset-l1 card-panel" style="margin-top: 4rem;">
+            {% include 'index/others/share_links.html' %}
+        </div>
+        <div class="col s12 m12 l6 offset-l1 ad" style="margin-top: 3rem;">
+            <div class="top-header center no-angle">
+                <h4>Listen to your iPad, iPhone, or Android phone.</h4>
+            </div>
+            <div class="card">
+                <div class="card-image ad ad-custom">
+                    <div class="img" style="background-image: url({% static 'index/images/app.jpg' %});">
+                        <div class="gradient-overlay">
+                            <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                        </div>
+                    </div>
+<!--                    <a class="waves-effect waves-light center ad" href="#"><strong>DOWNLOAD NOW</strong></a>-->
+                    <h5>Soon.</h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

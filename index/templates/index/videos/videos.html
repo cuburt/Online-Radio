@@ -1,0 +1,71 @@
+{% extends 'index/base.html' %}
+{% block title %}Videos | Jack Radio 90.5{% endblock %}
+{% block description %}{{ live_video.description }}{{ latest_video.description }}{% endblock %}
+{% block keywords %}KKK, Jack Radio Online, Jack Radio 90.5, Jack Radio Koronadal, Updates, Live{% endblock %}
+{% block og_title %}{{ live_video.title }}{{ latest_video.title }}{% endblock %}
+{% block og_image %}{{ live_video.picture.url }}{{ latest_video.picture.url }}{% endblock %}
+{% block og_description %}{{ live_video.description }}{{ latest_video.description }}{% endblock %}
+{% block og_type %}video.movie{% endblock %}
+{% block twitter_title %}{{ live_video.title }}{{ latest_video.title }}{% endblock %}
+{% block twitter_description %}{{ live_video.description }}{{ latest_video.description }}{% endblock %}
+{% block twitter_image %}{{ live_video.picture.url }}{{ latest_video.picture.url }}{% endblock %}
+{% block videos_active%}active{% endblock %}
+{% block videos_active_sn %}active{% endblock %}
+
+
+{% block body %}
+{% load staticfiles %}
+<div class="container">
+    <div class="row">
+        {% if live_video and live_video|length > 0 %}
+        <div class="row">
+            <div class="col s12 m12 l6" style="padding:30px;">
+                <div class="fb-video" data-href="{{ live_video.source }}" data-width="1080" data-show-text="false"></div>
+            </div>
+            <div class="col s12 m12 l6 " style="padding:25px">
+                <span class="new badge red left" data-badge-caption="LIVE"></span>
+                <h4><strong><a href="{% url 'index:video_detail' 'live-video' live_video.title|slugify live_video.id 'LIVE' %}">{{ live_video.title }}</a></strong></h4>
+                <br>
+                <p>{{ live_video.description }}</p>
+                <h6>Share:</h6>
+                <p>
+                    <a target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}/live-video/{{ live_video.title|slugify }}/id={{ live_video.id }}/status=LIVE', 'name','width=550,height=750')"><img src="{% static 'index/images/facebook_circle.png' %}" alt="" class="share-icon"></a>
+                    <a target="_blank" onclick="window.open('https://www.facebook.com/dialog/send?&app_id=741276612979782&amp;redirect_uri=https://www.domain.com/&amp;link={{ request.build_absolute_uri }}/live-video/{{ live_video.title|slugify }}/id={{ live_video.id }}/status=LIVE', 'name','width=550,height=750')"><img src="{% static 'index/images/messenger_circle.png' %}" alt="" class="share-icon"></a>
+                    <a target="_blank" onclick="window.open('https://twitter.com/home?title={{ request.build_absolute_uri }}/live-video/{{ live_video.title|slugify }}/id={{ live_video.id }}/status=LIVE', 'name','width=550,height=750')"><img src="{% static 'index/images/twitter_circle.png' %}" alt="" class="share-icon"></a>
+                </p>
+            </div>
+        </div>
+        {% else %}
+
+        {% endif %}
+        {% if latest_video and latest_video|length > 0 %}
+        <div class="row">
+            <div class="col s12 m12 l6" style="padding:30px;">
+                <div class="fb-video" data-href="{{ latest_video.source }}" data-width="1080" data-show-text="false"></div>
+            </div>
+            <div class="col s12 m12 l6 " style="padding:25px;">
+                <span class="new badge blue left" data-badge-caption="Latest"></span>
+                <h4><strong><a href="{% url 'index:video_detail' 'latest-video' latest_video.title|slugify latest_video.id 'VOD' %}">{{ latest_video.title }}</a></strong></h4>
+                <br>
+                <p>{{ latest_video.description }}</p>
+                <h6>Share:</h6>
+                <p>
+                    <a target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}/latest-video/{{ latest_video.title|slugify }}/id={{ latest_video.id }}/status=VOD', 'name','width=550,height=750')"><img src="{% static 'index/images/facebook_circle.png' %}" alt="" class="share-icon"></a>
+                    <a target="_blank" onclick="window.open('https://www.facebook.com/dialog/send?&app_id=741276612979782&amp;redirect_uri=https://www.domain.com/&amp;link={{ request.build_absolute_uri }}/latest-video/{{ latest_video.title|slugify }}/id={{ latest_video.id }}/status=VOD', 'name','width=550,height=750')"><img src="{% static 'index/images/messenger_circle.png' %}" alt="" class="share-icon"></a>
+                    <a target="_blank" onclick="window.open('https://twitter.com/home?title={{ request.build_absolute_uri }}/latest-video/{{ latest_video.title|slugify }}/id={{ latest_video.id }}/status=VOD', 'name','width=550,height=750')"><img src="{% static 'index/images/twitter_circle.png' %}" alt="" class="share-icon"></a>
+                </p>
+            </div>
+        </div>
+        {% else %}
+
+        {% endif %}
+        <div class="row">
+            {% include 'index/others/follow_links.html' %}
+        </div>
+        <div class="row">
+            {% include 'index/videos/video_extn.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

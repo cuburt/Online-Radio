@@ -1,0 +1,22 @@
+{% extends 'index/base.html' %}
+{% block title %}How to listen? | Jack Radio 90.5{% endblock %}
+{% block info_active %}active{% endblock %}
+{% block info_active_sn %}active{% endblock %}
+
+
+
+
+{% block body %}
+{% load staticfiles%}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12 l12" style="margin-top: 1rem;">
+            <div class="img" style="background-image: url({% static 'index/images/how.jpg' %});">
+                <div class="gradient-overlay">
+                    <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

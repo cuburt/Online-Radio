@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<div class="col s12 m12 l12">
+
+    <div class="col s12 m12 l12" style="border: 2px; padding: 2px;">
+        <h6 style="display: inline-block;"><strong>Recent articles you have authored:</strong></h6>
+        <a class="waves-effect waves-light btn-small right" href="{% url 'index:compose_article' user.id %}"><i class="material-icons right">add</i><strong>add article</strong></a>
+    </div>
+
+    <ul class="collection z-depth-2">
+        {% if news %}
+        {% for item in news %}
+        <li class="collection-item avatar">
+            <div class="row news">
+                <div class="col s3 m3 l3 valign-wrapper">
+                    <div class="img" style="background-image: url({{ item.picture.url }});">
+                        <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                    </div>
+                </div>
+                <div class="col s9 m9 l9">
+                    <a href="{% url 'index:update_article' user.id item.id True %}"><span class="title"><h5>{{ item.headline }}</h5></span></a>
+                    {{ item.content|truncatewords_html:10|safe}}
+                    <p><small>{{ item.date|date:'Y-m-d H:i' }}</small><small class="right">{% if item.is_published %}Published{% else %}Not published{% endif %}</small></p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+        {% endif %}
+            <h6 class="center-align" style="color: #ff7043; margin-top: 10px; margin-bottom: 10px;"><a href="{% url 'index:news_list' user.id %}" style="color: #ff7043">See full list</a></h6>
+
+    </ul>
+
+</div>

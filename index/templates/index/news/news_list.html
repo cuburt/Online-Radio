@@ -1,0 +1,29 @@
+{% extends 'index/base.html' %}
+{% block title %}News List | Site Moderator{% endblock %}
+{% block bantaypin_active%}active{% endblock %}
+{% block bantaypin_active_sn %}active{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col"><strong>Title</strong></th>
+      <th scope="col"><strong>Date Time published</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if news_list %}
+    {% for col in news_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:update_article' user_id col.id True %}">{{ col.headline }}</a></td>
+      <td><small>{{ col.date }}</small></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}

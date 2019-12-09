@@ -1,0 +1,8 @@
+{% load staticfiles %}
+{% load social_share %}
+<h6>Share:</h6>
+<p>
+    {% post_to_facebook object_or_url %}
+    {% post_to_messenger object_or_url %}
+    {% post_to_twitter "{{object.headline}}{{ title }}{{ subtext }}{{ video.title }}" object_or_url  %}
+</p>

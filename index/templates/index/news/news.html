@@ -1,0 +1,71 @@
+{% extends 'index/base.html' %}
+{% block title %}News | Jack Radio 90.5{% endblock %}
+{% block news_active%}active{% endblock %}
+{% block news_active_sn %}active{% endblock %}
+
+
+{% block body %}
+{% load staticfiles %}
+<div class="row">
+
+    <div class="container">
+        <ul class="tabs">
+            {% if news_category %}
+            {% for field in news_category %}
+            {% for i in news_category %}
+            {% if forloop.parentloop.counter == i.tabindex %}
+            <li class="tab news"><a href="#{{ i.id }}">{{ i.title }}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+        </ul>
+    </div>
+
+        {% if news_category %}
+        {% for field in news_category %}
+        <div id="{{ field.id }}" class="col s12">
+            <div class="container" >
+                        <div class="row">
+
+                            {% for item in news %}
+                            {% if item.is_published %}
+                            {% if item.category.id == field.id %}
+                            <div class="col s12 l6 m12 news" >
+                                <div class="card hoverable">
+                                    <div class="card-image" >
+                                        <div class="img" style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)), url({{ item.picture.url }});">
+                                            <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                                        </div>
+                                         <span class="card-title"><strong>{{ item.headline }}</strong></span>
+                                    </div>
+                                    <div class="card-content">
+                                        <p>{{ item.content|truncatewords_html:20|safe}}</p>
+                                        <br>
+                                    </div>
+                                    <div class="card-action">
+                                        <small><span class="left">By {{ item.author.first_name }} {{ item.author.last_name }} ({{ item.date }})</span></small>
+                                        <a href="{% url 'index:news_detail' item.category.title|slugify item.headline|slugify item.id %}"><span class="right">Read more</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+                            {% empty %}
+                            <div class="col s12 m12 l12 offset-l4">
+                                <div style="margin: 5rem 3rem;">
+                                    <img src="{% static '/index/images/no_news.png' %}" alt="">
+                                    <a href="#"><h5 class="align-center">No news to show :(</h5></a>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+</div>
+
+{% endblock %}

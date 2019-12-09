@@ -1,0 +1,33 @@
+{% extends 'index/base.html' %}
+{% block title %}Register | Content manager{% endblock %}
+{% block bantaypin_active %}active{% endblock %}
+
+{% block body %}
+
+<div class="container editor-container">
+    <div class="row">
+        <div class="col s12 m12 l6 offset-l3" style="margin-top: 30px;">
+            <div class="card white darken-1">
+                <div class="card-content">
+                    <span class="card-title"><strong>Register for an account</strong></span>
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <p><label for="id_employee_id">Employee ID:</label> <input type="text" name="employee_id" maxlength="30" id="id_employee_id"></p>
+                        {{ form.as_p }}
+                        <div class="form-group">
+                            <div style="margin-top:20px;">
+                                <button type="submit" class="btn btn-success orange">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-action">
+                    Already have an account? <a href="{% url 'index:login_user' %}">Click here</a> to log in.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

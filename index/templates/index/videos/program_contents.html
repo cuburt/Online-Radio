@@ -1,0 +1,23 @@
+
+
+<!--<a href="#" id="loadLeft"><i class="large material-icons left">arrow_back</i></a>-->
+
+{% load staticfiles %}
+{% for field in video.list|slice:":4" %}
+<div class="col s12 m12 l3" id="program_contents">
+
+    <div class="card hoverable" onclick="location.href='{% url 'index:video_detail' video.grouper|slugify field.title|slugify field.id 'VOD' %}';" >
+        <div class="card-image">
+            <div class="img" style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0)), url({{ field.picture }});">
+                <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+            </div>
+            <span class="card-title truncate"><small>{{ field.created_time }}</small><br><strong>{{ field.title }}</strong></span>
+        </div>
+    </div>
+
+</div>
+{% endfor %}
+
+
+<!--<a href="#" id="loadRight"><i class="large material-icons right">arrow_forward</i></a>-->
+

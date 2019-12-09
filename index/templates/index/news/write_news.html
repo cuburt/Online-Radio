@@ -1,0 +1,42 @@
+{% extends 'index/base.html' %}
+{% block title %}Editor | Content manager{% endblock %}
+{% block bantaypin_active %}active{% endblock %}
+{% block bantaypin_active_sn %}active{% endblock %}
+
+{% block body %}
+{% load staticfiles %}
+
+<div class="container editor-container">
+    <div class="row">
+
+        <div class="col s12 m12 l12">
+            <div class="card-panel">
+                <h4><strong>Editor</strong></h4>
+                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <p style="padding:1rem;margin-top:1rem; margin-bottom:1rem;background-color:#e3e3e2; border:solid;border-width:2px; border-color:#d2d2d2;border-radius:2px;">
+                    <label>
+                        <input type="checkbox" name="is_published">
+                        <span style="font-size: .8rem;color: #000000;">Published.</span>
+                    </label>
+                    </p>
+                    <div class="form-group">
+                        <div>
+                            {% for col in user %}
+                            <input  type="reset" class="btn btn-success orange" name="cancel" value="Cancel" onclick="location.href='{% url 'index:mod' col.id %}';"  />
+                            {% endfor %}
+                            <button type="reset" class="btn btn-success orange">Reset</button>
+                            <button type="submit" class="btn btn-success orange">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

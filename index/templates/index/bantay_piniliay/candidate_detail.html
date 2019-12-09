@@ -1,0 +1,23 @@
+{% extends 'index/base.html' %}
+{% block title %}{{ candidate.lastname }} {{ candidate.firstname }}{% endblock %}
+{% block bantaypin_active %}active{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">{{ candidate.lastname }} {{ candidate.firstname }}</h4>
+        <br>
+
+        <h5>Has {{ vote.votes }} votes.</h5>
+
+        <br>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" placeholder="Vote Count">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Update</button>
+        </form>
+        <hr>
+        <h7>Note: This will only affect the total vote count in your cluster.</h7>
+    </div>
+</div>
+{% endblock %}

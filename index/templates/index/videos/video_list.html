@@ -1,0 +1,18 @@
+{% extends 'index/base.html' %}
+{% block title %}List of Videos | Jack Radio 90.5{% endblock %}
+{% block videos_active%}active{% endblock %}
+{% block videos_active_sn %}active{% endblock %}
+
+{% block body%}
+{% load staticfiles %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            {% if video_list %}
+            {% regroup video_list|dictsort:"program" by program as video_list_list %}
+            {% include 'index/videos/video_list_detail.html' %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

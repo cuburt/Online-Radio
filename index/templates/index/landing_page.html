@@ -1,0 +1,278 @@
+{% extends 'index/base.html' %}
+{% block title %}Jack Radio 90.5 | Radyo Kapanalo{% endblock %}
+{% block home_active%}active{% endblock %}
+{% block home_active_sn %}active{% endblock %}
+
+
+
+
+{% block body %}
+
+{% load staticfiles%}
+
+<!--<div class="parallax-container">-->
+<!--    <div class="parallax">-->
+<!--        <img src="{% static 'index/images/bg.jpg' %}" alt="" class="responsive-img">-->
+<!--    </div>-->
+<!--</div>-->
+<div class="section white no-pad-top banner_section">
+    <div class="row" id="section_orange" style="background-image: linear-gradient(to top, rgba(245, 246, 252, 0), rgba(0, 0, 0)), url({% static 'index/images/DSC_0015.JPG' %});">
+        {% include 'index/others/xmas_lights.html' %}
+        <canvas id="xmas" style="width: 100%; height: 100%; position: relative; z-index: 2;"></canvas>
+        {% include 'index/others/snowman.html' %}
+        {% include 'index/others/santa.html' %}
+        <div class="audio-visualisation-wrapper" style="visibility: hidden;">
+            <div class="audio-visualisation-wrapper-inner bgTop">
+                <div class="audio-visualisation waveTop" style="background-image: url({% static 'index/images/wave1.png' %})"></div>
+            </div>
+            <div class="audio-visualisation-wrapper-inner bgMiddle">
+                <div class="audio-visualisation waveMiddle" style="background-image: url({% static 'index/images/wave2.png' %})"></div>
+            </div>
+            <div class="audio-visualisation-wrapper-inner bgBottom">
+                <div class="audio-visualisation waveBottom" style="background-image: url({% static 'index/images/wave2.png' %})"></div>
+            </div>
+        </div>
+        <div class="container" id="section_orange_container">
+            <div class="row landing_banner">
+                <span class="header-text-1">Featured</span><span class="header-text-2"> on </span><span class="header-text-3">JACK RADIO</span>
+            </div>
+            <div class="row slider-wrapper">
+                <div class="slider z-depth-5">
+                    <ul class="slides">
+                        {% for i in landing_cover %}
+                        <li style="background-image: linear-gradient(to {% if i.text_alignment.id == 1 %}top{% else %}{{ i.text_alignment }}{% endif %}, rgba(245, 246, 252, 0), rgba(0, 0, 0)), url({{ i.image.url }});height: 100%;width: 100%;background-size: cover;background-position: center;">
+                            <div class="caption {{ i.text_alignment }}-align">
+                                <h3>{{ i.text }}</h3>
+                                <h5 class="light grey-text text-lighten-3">{{ i.sub_text }}</h5><br>
+                                {% if i.has_action %}
+                                <a class="waves-effect waves-light btn-slider {{ i.text_alignment }}" href="{{ i.action_url }}"><strong>{{ i.action_name }}</strong></a>
+                                {% else %}
+                                {% endif %}
+                            </div>
+                        </li>
+                        {% empty %}
+                        <!--                    <li style="background-image: url({% static 'index/images/logo.png' %});left: 15%; height: 100%;width: 70%;background-size: cover;background-position: center;"/>-->
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <audio class="audio-file" id="audio-player" controls style="margin:auto;">
+            <source src="{{ audio_url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <div class="fixed-action-btn controls">
+            <a class="btn-floating btn-large pulse play-btn">
+                <i class="material-icons">play_arrow</i>
+            </a>
+            <ul class="play-volume">
+                <li><a class="btn-floating volume-btn up"><i class=" medium material-icons">volume_up</i></a></li>
+                <li><a class="btn-floating volume-btn down"><i class=" medium material-icons">volume_down</i></a></li>
+                <li><a class="btn-floating volume-btn mute"><i class=" medium material-icons">volume_off</i></a></li>
+            </ul>
+            <script type="text/javascript">
+                    var audioplayer = document.getElementById("audio-player");
+                    var value = 100;
+                    $(".play-btn").click(function(){
+                        if($(".play-btn>i").text() == 'play_arrow'){
+                            $(".play-btn>i").text("pause");
+                            $(".play-btn").attr("class", "btn-floating btn-large play-btn");
+                            $(".audio-visualisation-wrapper").attr("style", "visibility: visible; transition: visibility 0s, opacity 0.5s linear;");
+                        } else if($(".play-btn>i").text() == 'pause'){
+                            $(".play-btn>i").text("play_arrow");
+                            $(".play-btn").attr("class", "btn-floating btn-large pulse play-btn");
+                            $(".audio-visualisation-wrapper").attr("style", "visibility: hidden; transition: visibility 0s, opacity 0.5s linear;");
+                        }
+
+                        if (audioplayer.paused) {
+                            audioplayer.play();
+                        }
+                        else {
+                            audioplayer.pause();
+                        }
+                        $(this).toggleClass('pause');
+                    })
+                    $(".up").click(function(){
+                        if(value<100){
+                        value = value+10;
+                        audioplayer.volume = (value/100);
+                        } else {
+                        value = 100;
+                        audioplayer.volume = (value/100);
+                        }
+                    })
+                    $(".down").click(function(){
+                        value = value-10;
+                        audioplayer.volume = (value/100);
+                    })
+                    $(".mute").click(function(){
+                        audioplayer.volume = (0/10);
+                    })
+
+                </script>
+        </div>
+
+
+
+    </div>
+    <div class="row" id="landing_header">
+        <div class="top-header center wrap-content" style="left:15rem;top:-2rem;margin-bottom:0px;transform: rotate(0deg);">
+            <h4 style="margin:0;">Fancy goin' retro? </h4>
+        </div>
+        <!--        <div class="halo"></div>-->
+        <div class="img intro-img" style="background-image:url({% static 'index/images/vinyl.png' %})"></div>
+        <div class="freddie" style="background-image:url({% static 'index/images/freddie.png' %})"></div>
+        <div class="billy" style="background-image:url({% static 'index/images/billy.png' %})"></div>
+        <div class="intro">
+            <span class="intro intro--the">The</span>
+            <span class="intro intro--num">No. 1</span>
+            <span class="intro">Radio Station</span>
+        </div>
+        <div class="vintage__container">
+            <p class="vintage vintage__top">JACK RADIO</p>
+            <p class="vintage vintage__bot">JACK RADIO</p>
+        </div>
+        <div class="outro">
+            <span class="outro ">No.1</span>
+            <span class="outro outro--big">RADYO KAPANALO</span>
+            <span class="outro ">90.5</span>
+            <span class="outro outro--smart">Playing your favorite retro music</span>
+        </div>
+    </div>
+</div>
+<div class="section no-pad-top footer_section" >
+    <div class="top-header center wrap-content" style="left:15rem;top:-2rem;margin-bottom:0px;transform: rotate(0deg);">
+        <h4 style="margin:0;">Live from JACK</h4>
+    </div>
+    <div class="row container">
+        <div class="col s12 m12 l8">
+            <div class="fb-video" data-href="{{ video_url }}" data-width="1080" data-show-text="false"></div>
+        </div>
+        <div class="col s12 m12 l4">
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0&appId=741276612979782&autoLogAppEvents=1"></script>
+            <div class="fb-page" data-href="https://www.facebook.com/RadyoKapanalo90.5/" data-tabs="timeline, messages" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                <blockquote cite="https://www.facebook.com/RadyoKapanalo90.5/" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/RadyoKapanalo90.5/">Jack Radio Online</a>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="parallax-container lp-parallax-container" style="padding-top:2.5rem; padding-bottom:0.5rem;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col s12 m6 l5 ad">
+                <div class="top-header wrap-content">
+                    <h5>First CEE: The Ultimate Vit. C</h5>
+                </div>
+                <div class="card">
+
+                    <div class="card-image ad">
+                        <div class="img" style="background-image: url({% static 'index/images/firstc_front.jpg' %});">
+                            <div class="gradient-overlay">
+                                <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light center ad" href="{% url 'index:info' 'first-cee' %}"><strong>LEARN MORE</strong></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col s12 m6 l5 offset-l2 ad">
+                <div class="top-header wrap-content">
+                    <h5
+                    >XTRM: Xanthone Supplement</h5>
+                </div>
+                <div class="card">
+                    <div class="card-image ad">
+                        <div class="img" style="background-image: url({% static 'index/images/xtrm_front.jpg' %});">
+                            <div class="gradient-overlay">
+                                <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light center ad" href="{% url 'index:info' 'xtrm' %}"><strong>LEARN MORE</strong></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="parallax"><img src="{% static 'index/images/DSC_0018.JPG' %}" alt="" class="responsive-img"></div>
+</div>
+
+<div class="section no-pad-top body_section" >
+    <div class="top-header center wrap-content" style="left:15rem;top:-2rem;margin-bottom:0px;transform: rotate(0deg);">
+        <h4 style="margin:0;">Let your brand be heard! Advertise with us.</h4>
+    </div>
+    <div class="row container">
+        <div class="col s12 m12 l8">
+            <h2 class="header header-text wrap-content"style="margin-top:50px;top:-3rem; position:relative;">Why radio?</h2>
+            <ol class="landing-list"style="top:-3rem;position:relative;">
+                <li>Because radio is truly the "Theatre of the Mind".</li>
+                <li>Radio uses the voice, music, and sound effects to create mood and image, sparkling the imagination in way print or television does not.</li>
+                <li>Radio advertising gives you an oppurtunity to deliver a message to a specific demographic.</li>
+                <li>Radio advertising's return of investment is much higher than that on a television since ads on TV costs more to make.</li>
+                <li>Another good thing about radio is that, it is a truly portable system that exists in your car, phone, may be in your kitchen, or workingplace at the gym, and even among public transportaions.</li>
+                <li>Wherever your customer is, chances are, a radio is nearby.</li>
+                <li>With radio, the possibility for your business to be heard is endless.</li>
+                <li><a href="{% url 'index:advertise' %}">Advertise now!</a></li>
+            </ol>
+        </div>
+        <div class="col s12 m12 l4" style="padding-top:4rem;">
+            <div class="container">
+                {% include 'index/others/vfollow_links.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="parallax-container lp-parallax-container" style="padding-top:70px; padding-bottom:70px;">
+    <div class="container">
+        <div class="row">
+
+            <div class="col s12 m6 l5 ad" >
+                <div class="card">
+                    <div class="card-image ad">
+                        <div class="img" style="background-image: url({% static 'index/images/social_media.jpg' %});">
+                            <div class="gradient-overlay">
+                                <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light center ad" href="{% url 'index:info' 'contact-jack' %}"><strong>LEARN MORE</strong></a>
+                    </div>
+                </div>
+                <div class="bottom-header center">
+                    <h4>Get Social</h4>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l5 offset-l2 ad">
+
+                <div class="card">
+                    <div class="card-image ad">
+                        <div class="img" style="background-image: url({% static 'index/images/how_to_listen.jpg' %});">
+                            <div class="gradient-overlay">
+                                <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light center ad" href="{% url 'index:how_to_listen' %}"><strong>LEARN MORE</strong></a>
+                    </div>
+                </div>
+                <div class="bottom-header center">
+                    <h4>How to listen?</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="parallax"><img src="{% static 'index/images/DSC_0018.JPG' %}" alt="" class="responsive-img"></div>
+</div>
+
+
+
+{% endblock %}

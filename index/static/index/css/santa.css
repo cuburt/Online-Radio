@@ -1,0 +1,111 @@
+santa{position:absolute; bottom:10px;left:10px;z-index:3;}
+.santa{width:334px;height:360px;margin:100px auto 0;z-index:5;}
+
+/*HAT*/
+santa .hat{width:101px;height:101px;border-radius:0 0 100px 0;background:#E64604;position:absolute;bottom:250px;right:39px}
+santa .hat::before,
+santa .hat::after{content:'';background:#fff;width:30px;height:16px;border-radius:15px 0 15px 0;position:absolute;top:-15px;right:-30px}
+santa .hat::after{top:0;border-radius:0 15px 0 15px}
+
+/*HEAD*/
+santa .head{width:202px;height:201px;border-radius:100%;right:40px;bottom:150px;position:absolute;z-index:1;
+background:linear-gradient(to bottom, #F0E5D8 0%, #F0E5D8 50%, #fff 50%, #fff 100%);
+background:-webkit-linear-gradient(top, #F0E5D8 0%, #F0E5D8 50%, #fff 50%, #fff 100%);}
+
+santa .face{width:136px;height:68px;background:blue;border-radius:68px 68px 0 0;position:absolute;left:33px;top:32px;z-index:-1;overflow:hidden;
+background:linear-gradient(to right, #F1C1A0 0%, #F1C1A0 50%, #F4D1B9 50%, #F4D1B9 100%);
+background:-webkit-linear-gradient(left, #F1C1A0 0%, #F1C1A0 50%, #F4D1B9 50%, #F4D1B9 100%);}
+santa .face::before,
+santa .face::after{content:'';display:block;width:66px;height:33px;background:#F49598;border-radius:33px 33px 0 0;position:absolute;top:35px;left:-31px;}
+santa .face::after{left:auto;right:-31px}
+
+santa .eye,
+santa .nose{width:14px;height:14px;background:#0972C9;border-radius:100%;position:absolute;left:71px;top:74px;z-index:1}
+santa .eye::before{content:'';display:block;width:30px;height:15px;background:#fff;border-radius:15px 0;position:absolute;left:-13px;top:-22px;
+transition:all 400ms;-webkit-transition:all 400ms}
+santa .eye.right{left:auto;right:70px}
+santa .eye.right::before{border-radius:0 15px;left:-3px}
+
+santa .nose{background:#F49598;margin-top:93px;margin-left:94px;position:static;}
+santa .nose::before,
+santa .nose::after{content:'';width:68px;height:34px;background:#F0E5D8;border-radius:34px 0;position:absolute;z-index:-1;margin-left:-61px;margin-top:7px;
+transition:all 400ms;-webkit-transition:all 400ms}
+santa .nose::after{border-radius:0 34px;margin-left:7px}
+
+
+/*BODY*/
+santa .body{background:#E64604;width:202px;height:190px;border-radius:45% 45% 43% 42% / 42% 42% 37% 37%;
+bottom:40px;right:40px;position:absolute;}
+santa .body::before{content:'';width:45px;height:17px;background:#F0E5D8;position:absolute;top:73px;left:78px;}
+
+santa .hand{position:absolute;background:inherit;height:110px;width:110px;border-radius:0 110px 0 0;right:-40px;top:-3px;background:radial-gradient(circle at 0 100%, rgba(204,0,0,0) 65px, #E64604 15px);
+}
+santa .hand::after{content:'';position:absolute;width:40px;height:36px;background:#F4D1B9;border-radius:0 0 20px 20px;
+top:110px;left:70px;box-shadow:inset 0 16px 0 #fff}
+
+santa .hand.left{right:auto;left:-51px;top:-35px;
+transform:rotate(135deg);
+-webkit-transform:rotate(135deg);
+-ms-transform:rotate(135deg);
+animation:shakeHand 4s infinite;
+-webkit-animation:shakeHand 4s infinite;}
+santa .hand.left::before{content:'';position:absolute;width:85px;height:85px;border-radius:0 110px 0 0;top:61px;left:1.5px;
+transform:rotate(33deg);
+-webkit-transform:rotate(33deg);
+-ms-transform:rotate(33deg);}
+
+santa .belt{width:100%;height:33px;position:absolute;top:90px;
+background:linear-gradient(to right, #391100 0%, #391100 15.5%, transparent 15.5%, transparent 23.5%, #391100 23.5%, #391100 61.5%, #402E25 61.5%, #402E25 76.5%, transparent 76.5%, transparent 84%, #402E25 84%);
+background:-webkit-linear-gradient(left, #391100 0%, #391100 15.5%, transparent 15.5%, transparent 23.5%, #391100 23.5%, #391100 61.5%, #402E25 61.5%, #402E25 76.5%, transparent 76.5%, transparent 84%, #402E25 84%);}
+santa .belt::before{content:'-';display:block;position:absolute;height:17px;width:29px;border:8px solid #FEDE25;left:78px;z-index:1;
+color:#FEDE25;font:bold 40px/10px Arial, Helvetica, sans-serif;text-indent:18px;text-align:right;}
+santa .belt::after{content:'';display:block;position:absolute;height:33px;width:33px;left:106px;border-radius:100%;background:#391100;}
+santa .leg.left{border-radius: 0 0 0 80px;top: 125px;left:0px}
+santa .leg{position:absolute;background:inherit;height: 90px;width: 80px;border-radius: 0 0 80px 0;top: 125px;right: 0px;}
+santa .shoes.left{border-radius:17px 0 0 0;background:#391100;position:absolute;bottom:-40px;left:59px}
+santa .shoes{width:21px;height:17px;border-radius:0 17px 0 0;background:#391100;position:absolute;bottom:-40px;right:59px}
+
+
+/*Hand Animation*/
+@-webkit-keyframes shakeHand{
+	0%  {-webkit-transform:rotate(135deg)}
+	50% {-webkit-transform:rotate(155deg)}
+	100%{-webkit-transform:rotate(135deg)}
+}
+@keyframes shakeHand{
+	0%  {transform:rotate(135deg);-ms-transform:rotate(135deg)}
+	50% {transform:rotate(155deg);-ms-transform:rotate(155deg)}
+	100%{transform:rotate(135deg);-ms-transform:rotate(135deg)}
+}
+
+/*HOVER STATES*/
+.santa:hover .nose::after{margin-top:3px;
+	transform:rotate(-8deg);
+	-webkit-transform:rotate(-8deg);
+	-ms-transform:rotate(-8deg);
+}
+.santa:hover .nose::before{margin-top:3px;
+	transform:rotate(8deg);
+	-webkit-transform:rotate(8deg);
+	-ms-transform:rotate(8deg);
+}
+.santa:hover .eye::before{
+	transform:rotate(-15deg);
+	-webkit-transform:rotate(-15deg);
+	-ms-transform:rotate(-15deg);
+}
+.santa:hover .eye.right::before{
+	transform:rotate(15deg);
+	-webkit-transform:rotate(15deg);
+	-ms-transform:rotate(15deg);
+}
+
+@media only screen and (max-width: 480px) {
+.santa{
+width:84px;
+height:110px;
+}
+santa{
+left: 70px;
+}
+}

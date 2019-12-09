@@ -1,0 +1,71 @@
+{% extends 'index/base.html' %}
+{% block title %}{{ title }} | Jack Radio 90.5{% endblock %}
+{% block description %}{{ subtext }}{% endblock %}
+{% block keywords %}KKK, KAPA, Jack Radio Online, Jack Radio 90.5,Jack Radio Koronadal, updates{% endblock %}
+{% block og_title %}{{ title }} | Jack Radio 90.5{% endblock %}
+{% block og_image %}{{ picture }}{% endblock %}
+{% block og_description %}{{ subtext }}{% endblock %}
+{% block og_type %}website{% endblock %}
+{% block twitter_title %}{{ title }} | Jack Radio 90.5{% endblock %}
+{% block twitter_description %}{{ subtext }}{% endblock %}
+{% block twitter_image %}{{ picture }}{% endblock %}
+{% block info_active %}active{% endblock %}
+{% block info_active_sn %}active{% endblock %}
+
+
+
+
+{% block body %}
+
+{% load staticfiles%}
+
+<div class="container">
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static 'index/images/DSC_0012.JPG' %}" alt="" class="responsive-img"></div>
+    </div>
+
+    <div class="section white">
+        <div class="row">
+            <div class="container">
+            {% if content %}
+            {% for item in content %}
+            {{ item.content|safe}}
+            {% if item.has_action %}
+            <a class="waves-effect waves-light btn-slider right" href="{{ item.action_url }}"><strong>{{ item.action_name }}</strong></a>
+            {% else %}
+            {% endif %}
+            </div>
+            {% if item.page.title == 'Contact JACK' %}
+            <div class="row container editor-container">
+                <div class="container editor-container">
+                    <div class="card-panel">
+                        {% if form %}
+                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <div class="form-group">
+                                <div>
+                                    <button type="submit" class="btn btn-success orange">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            <div class="row container" style="padding-top:4rem;">
+                {% include 'index/others/share_links.html' %}
+                {% include 'index/others/follow_links.html' %}
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="parallax about"><img src="{% static 'index/images/DSC_0018.JPG' %}" alt="" class="responsive-img"></div>
+    </div>
+</div>
+
+{% endblock %}

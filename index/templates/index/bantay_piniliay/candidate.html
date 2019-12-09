@@ -1,0 +1,147 @@
+{% extends 'index/base.html' %}
+{% block title %}List of Candidates | Bantay Piniliay 2k19{% endblock %}
+{% block bantaypin_active %}active{% endblock %}
+
+{% block body %}
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">position running for</th>
+      <th scope="col">votes in your area</th>
+      <th scope="col">overall votes</th>
+    </tr>
+    <tr>
+      <th scope="col">Congressman</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in congressman_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    <thead>
+    <tr>
+      <th scope="col">Provincial Governor</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in governor_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    <thead>
+    <tr>
+      <th scope="col">Provincial Vice Governor</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in vice_gov_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+
+    <thead>
+    <tr>
+      <th scope="col">Sangguniang Panlalawigan</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in lalawigan_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    <thead>
+    <tr>
+      <th scope="col">Mayor</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in mayor_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    <thead>
+    <tr>
+      <th scope="col">Vice Mayor</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in vice_mayor_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+
+    <thead>
+    <tr>
+      <th scope="col">Sangguniang Panglungsod</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in lungsod_list %}
+    <tr>
+      <!--<th scope="row">1</th>-->
+      <td><a href="{% url 'index:detail' cluster_id item.id %}">{{ item.lastname }} {{ item.firstname }}</a></td>
+      <td></td>
+      <td></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

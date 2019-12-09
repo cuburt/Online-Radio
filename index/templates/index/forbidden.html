@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Forbidden</title>
+</head>
+<body>
+<h1>Error 403: Forbidden Access</h1>
+<p>You are not authorised to directly access this page. Try this <a href="{% if user.is_authenticated and request.user.id %}{% url 'index:mod' request.user.id %}{% else %}{% url 'index:login_user' %}{% endif %}"><strong>link</strong></a> instead.</p>
+</body>
+</html>

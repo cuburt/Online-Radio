@@ -1,0 +1,4 @@
+{% if video_list %}
+{% regroup video_list|dictsort:"program" by program as video_list_list %}
+{% include 'index/videos/videos_by_programs.html' %}
+{% endif %}

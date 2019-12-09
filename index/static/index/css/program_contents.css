@@ -1,0 +1,35 @@
+#program_contents {
+    display:none;
+    position:absolute;
+}
+
+
+#loadLeft {
+
+
+    color: #d84315;
+
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadLeft:hover {
+
+    color: #ffffff;
+}
+
+#loadRight {
+
+
+    color: #d84315;
+
+    transition: all 600ms ease-in-out;
+    -webkit-transition: all 600ms ease-in-out;
+    -moz-transition: all 600ms ease-in-out;
+    -o-transition: all 600ms ease-in-out;
+}
+#loadRight:hover {
+
+    color: #ffffff;
+}

@@ -1,0 +1,26 @@
+{% load staticfiles %}
+{% for video in video_list_list %}
+<div class="row">
+    <div class="col s12 m12 l12" style="border: 2px; padding: 2px;">
+        <h6 style="display: inline-block;"><strong>{{ video.grouper|upper }} ({{ video.list|length }})</strong></h6>
+    </div>
+    <ul class="collection z-depth-2">
+        {% for field in video.list %}
+        <li class="collection-item avatar">
+            <div class="row videos">
+                <div class="col s3 m3 l3 valign-wrapper">
+                    <div class="img" style="background-image:url({{ field.picture }})">
+                        <img class="div" src="{% static 'index/images/maxresdefault.jpg' %}">
+                    </div>
+                </div>
+                <div class="col s9 m9 l9">
+                    <a href="{% url 'index:video_detail' video.grouper|slugify field.title|slugify field.id 'VOD' %}"><span class="title"><h5>{{ field.title }}</h5></span></a>
+                    <p>{{ field.description|truncatewords:20}}</p>
+                    <p><small>{{ field.created_time }}</small></p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}

@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<h6>Follow us:</h6>
+<div class="row">
+    <a href="https://www.facebook.com/RadyoKapanalo90.5" class="social-tab valign-wrapper" id="fb-tab" target="_blank">
+        <img class="social-img" src="{% static 'index/images/facebook.png' %}" alt="">
+        <span class="social-title">Facebook</span>
+    </a>
+</div>
+<div class="row">
+    <a href="https://www.youtube.com/channel/UC2zUirZ7dpWLIpyVA881mkg" class="social-tab valign-wrapper" id="yt-tab" target="_blank">
+        <img class="social-img" src="{% static 'index/images/youtube.png' %}" alt="">
+        <span class="social-title">Youtube</span>
+    </a>
+</div>
+<div class="row">
+    <a href="{% url 'index:info' 'contact-jack' %}" class="social-tab valign-wrapper" id="gm-tab" target="_blank">
+        <img class="social-img" src="{% static 'index/images/gmail.png' %}" alt="">
+        <span class="social-title">Newsletter</span>
+    </a>
+</div>

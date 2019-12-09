@@ -1,0 +1,226 @@
+div#landing_header.row{
+    background: url(http://api.thumbr.it/whitenoise-361x370.png?background=bf4c00ff&noise=6e3f0d&density=100&opacity=61);
+    margin-bottom:0px;
+    width: 100%;
+    height: 50vh;
+    position:relative;
+    display: flex;
+
+
+    -webkit-user-select: none; /* Chrome/Safari */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
+}
+
+.billy {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    right: -300px;
+    width: 380px;
+    height: inherit;
+    z-index: 2;
+    align-self: flex-end;
+}
+.freddie {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    left: -300px;
+    width: 215px;
+    height: inherit;
+    z-index: 2;
+    align-self: flex-end;
+}
+.intro-img{
+    height: 30rem;
+    width: 30rem;
+    position: absolute;
+    z-index: 1;
+    align-self: center;
+    margin: 0 auto;
+    left: 0;
+    right:0;
+}
+div.intro{
+    position: absolute;
+    z-index: 2;
+    align-self: flex-start;
+    text-align:center;
+    margin: 0 auto;
+    left: 0;
+    right:0;
+    margin-top:2rem;
+    width:max-content;
+}
+.intro {
+  color: rgb(230, 200, 160);
+  display: block;
+  font-family: 'Satisfy', cursive;
+  font-size: 32px;
+  text-shadow: 1px 1px black;
+  transform: rotate(-10deg);
+}
+.intro--the {
+  transform: rotate(-10deg) translate(-20px, 15px);
+}
+
+.intro--num {
+  background: rgb(240, 200, 160);
+  border: 1px dotted rgb(20, 60, 80);
+  color: rgb(20, 60, 80);
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bolder;
+  padding: 4px 6px 2px;
+  position: absolute;
+  text-shadow: none;
+  transform: rotate(-10deg) translate(20px, -25px);
+}
+
+.vintage__container {
+  display: inline-block;
+  margin: 0 auto;
+  text-align:center;
+  left: 0;
+  right:0;
+  position: absolute;
+  z-index: 2;
+  align-self: center;
+  }
+
+.vintage {
+  font-family: 'Six Caps', sans-serif;
+  font-size: 192px;
+  letter-spacing: 10px;
+  line-height: 1;
+  margin: 0;
+  position:relative;
+  margin: 0 auto;
+  text-align:center;
+  left: 0;
+  right:0;
+}
+.vintage__top {
+
+  background: linear-gradient(rgb(240, 220, 200), rgb(230, 200, 160));
+  -webkit-background-clip: text;
+  background-clip: text;
+  z-index: 1;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  position:absolute;
+}
+.vintage__bot {
+  text-shadow:
+    2px 1px rgb(85, 10, 0),
+    4px 2px rgb(90, 15, 5),
+    6px 4px rgb(100, 20, 15),
+    8px 5px rgb(105, 25, 20),
+    10px 6px rgb(110, 30, 25),
+    12px 7px rgb(115, 30, 30),
+    14px 8px rgb(120, 30, 35),
+    16px 9px black,
+    18px 10px black,
+    20px 11px black,
+    22px 12px black,
+    24px 13px black,
+    28px 14px rgba(0, 0, 0, 0.9),
+    30px 15px rgba(0, 0, 0, 0.7),
+    32px 16px rgba(0, 0, 0, 0.5),
+    34px 17px rgba(0, 0, 0, 0.3),
+    36px 18px rgba(0, 0, 0, 0.1),
+    40px 20px rgba(0, 0, 0, 0.1);
+}
+div.outro{
+    position: absolute;
+    z-index: 2;
+    align-self: flex-end;
+    text-align:center;
+    margin: 0 auto;
+    left: 0;
+    right:0;
+    padding-bottom:2rem;
+}
+.outro {
+  color: white;
+  font-family: 'Satisfy', cursive;
+  font-size: 16px;
+}
+
+.outro--big {
+  font-family: sans-serif;
+  font-size: 24px;
+}
+
+.outro--smart {
+  display: block;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 480px) {
+ .billy {
+    right: -200px;
+    width: 200px;
+    height: 320px;
+}
+.freddie {
+    left: -200px;
+    width: 140px;
+    height: 320px;
+}
+.intro-img{
+    height: 15rem;
+    width: 15rem;
+}
+.intro {
+  font-size: 24px;
+}
+.intro--num {
+  font-size: 12px;
+}
+.vintage {
+  font-size: 92px;
+}
+.outro {
+  font-size: 8px;
+}
+
+.outro--big {
+  font-size: 16px;
+}
+.outro--smart {
+  font-size: 16px;
+}
+}
+
+@media only screen and (max-width: 300px) {
+
+.billy {
+    right: -200px;
+    width: 200px;
+    height: 220px;
+}
+.freddie {
+    left: -200px;
+    width: 110px;
+    height: 220px;
+}
+.vintage {
+  font-size: 64px;
+}
+div.intro{
+margin-top:1rem;
+z-index: 16;
+transform: rotate(10deg);
+}
+.intro--num {
+  font-size: 12px;
+}
+
+}

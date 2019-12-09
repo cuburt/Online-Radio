@@ -1,0 +1,54 @@
+{% extends 'index/base.html' %}
+{% block title %}Advertise with us | Jack Radio 90.5{% endblock %}
+{% block description %}{{ subtext }}{% endblock %}
+{% block keywords %}KKK, KAPA, Jack Radio Online, Jack Radio 90.5,Jack Radio Koronadal, updates{% endblock %}
+{% block og_title %}{{ title }}{% endblock %}
+{% block og_image %}{% endblock %}
+{% block og_description %}{{ subtext }}{% endblock %}
+{% block og_type %}website{% endblock %}
+{% block twitter_title %}{{ title }}{% endblock %}
+{% block twitter_description %}{{ subtext }}{% endblock %}
+{% block twitter_image %}{% endblock %}
+{% block info_active %}active{% endblock %}
+{% block advertise_active_sn %}active{% endblock %}
+
+
+{% block body %}
+{% load staticfiles %}
+
+
+<div class="row container editor-container">
+    <div class="col s12 m12 l8 offset-l2">
+        <h4><strong>Advertise</strong></h4>
+        <br><h6>So you want your brand be heard across South Cotabato on JACK?</h6>
+        <br><h6>Fill this form out and we'll be in touch with you.</h6><br>
+
+        <div class="card-panel">
+            <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p style="padding:1rem;margin-top:1rem; margin-bottom:1rem;background-color:#e3e3e2; border:solid;border-width:2px; border-color:#d2d2d2;border-radius:2px;">
+                    <label>
+                        <input type="checkbox" name="is_newsletter">
+                        <span style="font-size: .8rem;color: #000000;">Receive regular updates direct to your inbox.</span>
+                    </label>
+                </p>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-success orange">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div class="col s12 m12 l2" style="padding-top:16rem;">
+        {% include 'index/others/vfollow_links.html' %}
+        {% include 'index/others/share_links.html' %}
+    </div>
+
+</div>
+
+
+
+{% endblock %}

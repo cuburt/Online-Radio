@@ -1,0 +1,78 @@
+{% extends 'index/base.html' %}
+{% block title %}Content manager | Jack Radio 90.5{% endblock %}
+{% block bantaypin_active %}active{% endblock %}
+{% block bantaypin_active_sn %}active{% endblock %}
+
+{% block body %}
+{% load staticfiles %}
+<div class="container">
+    <div id="profile-header" style="margin-top: 30px; margin-bottom: 40px; margin-left: 10px; margin-right: 10px;">
+        <ul class="collection z-depth-2">
+            <li class="collection-item avatar">
+                {% if user %}
+                <img src="images/yuna.jpg" alt="" class="circle">
+                <span class="title"><strong>{{ user.first_name }} {{ user.last_name }}</strong></span>
+                <input  type="button" class="btn btn-success right" name="logout" value="Logout" onclick="location.href='{% url 'index:logout_user' %}';"  />
+                <p><small>username: </small>{{ user.username }}<br><small>email: </small>{{ user.email }}<br>
+                    {% if user.is_superuser %}
+                    <small>site administrator </small></p>
+                    {% else %}
+                    <small>content manager </small></p>
+                    {% endif %}
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+<!--    user's option of activities-->
+        <div class="col s12 m12 l9">
+            <div class="row">
+<!--            archive of authored articles-->
+                {% include 'index/news/news_extn.html' %}
+            </div>
+            <div class="row">
+<!--            assigned clusters-->
+                {% include 'index/bantay_piniliay/clusters_extn.html' %}
+            </div>
+        </div>
+<!--         activity log-->
+        <div class="col s12 m12 l3">
+            <div class="col s12 m12 l12">
+                <h6 style="display: inline-block;"><strong>Recent actions</strong></h6>
+                <div id="logCount" class=" right valign-wrapper card-panel orange" style="padding:0px; padding-left:10px;padding-right:10px; max-height:30px;"><h6 class="center-align" style="color: #ffffff;"><strong>{{ logCount }}</strong></h6></div>
+
+            </div>
+            <ul class="collection with-header z-depth-2">
+                {% if logs %}
+
+
+
+                        {% for log in logs %}
+                        <li class="collection-item">
+
+
+                            {% if log.action_flag.action == 'ADD' %}
+                            <i class="material-icons">add</i>
+                            {% elif log.action_flag.action == 'UPDATE' %}
+                            <i class="material-icons">edit</i>
+                            {% elif log.action_flag.action == 'DELETE' %}
+                            <i class="material-icons">delete</i>
+                            {% endif %}
+                            {% if log.affected_table.module == 'NEWS' %}
+                            {{ log.affected_table }} : {{ log.news_obj }}
+                            {% elif log.affected_table.module == 'TABULATION' %}
+                            {{ log.affected_table }} : {{ log.tabs_obj }}
+                            {% endif %}
+                            <br>
+                            <small>{{ log.datetime|date:"m/d/Y - g:ia" }}</small>
+                        </li>
+                        {% endfor %}
+                {% else %}
+                <li class="collection-item">No recent activities</li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

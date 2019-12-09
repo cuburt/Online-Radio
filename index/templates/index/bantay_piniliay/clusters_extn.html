@@ -1,0 +1,17 @@
+<div class="col s12 m12 l12">
+
+    <div class="col s12 m12 l12" style="border: 2px; padding: 2px;">
+        <h6 style="display: inline-block;"><strong>Your assigned clusters:</strong></h6>
+    </div>
+
+    <div class="collection z-depth-2">
+        {% if cluster %}
+        {% for item in cluster %}
+        <a href="{% url 'index:candidates' item.id %}" class="collection-item">{{ item.title }}</a>
+        {% endfor %}
+        {% else %}
+        <h4>No clusters.</h4>
+        {% endif %}
+    </div>
+
+</div>
